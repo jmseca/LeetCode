@@ -111,7 +111,3 @@ class Solution:
         else:
             return elem[0][k-size-1]
         
-
-
-
-#This code works, but takes too much time
