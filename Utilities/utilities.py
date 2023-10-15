@@ -55,3 +55,23 @@ def binary_range_find(arr, target_range) -> int:
     if arr[mid][0]<target:
         return -(mid+2)   
     return -(mid+1)
+
+
+def merge_delta_with_sorted(sorted, delta, i):
+    '''
+    Given a list of sorted deltas ([x,y], with both ints and x<=y) 'sorted'.
+    And 'i' the position where a new delta 'delta' should be placed.
+    It adds the new delta to the sorted deltas list, merging any existing deltas, if necessary.
+    
+    For example:
+    sorted = [[0,10], [20,30], [35,40]]
+    delta = [8,21]
+    
+    It returns:
+    sorted = [[0,30], [35,40]]
+    '''
+    sorted = sorted[:i] + [delta] + sorted[i:]
+    done = False
+    while ( (sorted[(i+1):]) and (sorted[i][1] > sorted[(i+1)][0])):
+        sorted = sorted[:i] + [[sorted[i][0],max(sorted[i+1][1],sorted[i][1])]] + sorted[(i+2):]
+    return sorted
