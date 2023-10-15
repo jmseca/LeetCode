@@ -25,3 +25,33 @@ def binary_find(arr, target) -> int:
     if arr[mid]<target:
         return -(mid+2)   
     return -(mid+1)
+
+
+def binary_range_find(arr, target_range) -> int:
+    """
+    Similar to the binary find above, but it works with ranges
+    This means that 'arr' is a list of sorted ranges.
+    
+    For example:
+    [[0,10], [15,30], [40,40]]
+    """ 
+    target = target_range[0]
+    if not(len(arr)):
+        return -1
+    
+    left, right = 0, len(arr) - 1
+    
+    while left <= right:
+        mid = left + (right - left) // 2 
+        
+        if arr[mid][0] <= target and arr[mid][1] >= target:
+            # Target found, return its index
+            return (mid+1)
+        elif arr[mid][1] < target:
+            left = mid + 1
+        else:
+            right = mid - 1 
+    # Target not found in the array
+    if arr[mid][0]<target:
+        return -(mid+2)   
+    return -(mid+1)
