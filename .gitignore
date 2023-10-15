@@ -1,2 +1,5 @@
 **/[Mm]akefile
 **/run.sh
+**/main
+**/*.swp
+**/.vscode/
