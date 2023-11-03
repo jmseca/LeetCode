@@ -57,6 +57,37 @@ void print2DVector(vector<vector<T>>& v){
         
 }
 
+/*
+Similar to the binary find above, but it works with count pairs
+
+For example:
+[[0,1], [3,2], [5,1]]
+Where [i,n]:
+i - value
+n - times value has been seen
+*/
+template <typename T>
+int binaryCountPairFind(vector<pair<T,int>>& arr, T target){
+    int size = arr.size();
+    int left = 0, right = size - 1, mid;
+
+    if (!size)
+        return -1;
+
+    while (left <= right){
+        mid = left + (right - left)/2;
+        if (arr[mid].first == target){
+            return (mid+1);
+        } else if (arr[mid].first < target){
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }   
+    }
+    if (arr[mid].first < target)
+        return -(mid+2);
+    return -(mid+1);
+}
 
 /*
 Similar to the binary find above, but it works with ranges
