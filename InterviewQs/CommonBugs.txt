@@ -1,0 +1,13 @@
+BUGS Comuns
+
+- Ficar com um while infinito
+- Off-by-one errors 
+	(quer seja </> que deviam ser <=/>= e vice-versa)
+	(return sum -> return sum + 1)
+
+- Trocar operacoes. Nestes casos é distracao apenas
+	<= -> >=
+	+= -> -= 
+
+- Nomes
+- Return nas funcoes
